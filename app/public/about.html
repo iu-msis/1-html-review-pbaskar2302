@@ -10,6 +10,7 @@
 
     <title>Hulk Info</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
     <header class="row">
@@ -24,13 +25,13 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">HULK HOME</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="about.html">HULK INFO</a>
+                <a class="nav-link active" aria-current="page" href="about.html">Info</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="books.html">HULK BOOKS</a>
+                <a class="nav-link" href="books.html">Books</a>
               </li>
             </ul>
           </div>
@@ -38,75 +39,72 @@
       </nav>
       <div class="container">
         <div class="row mx-auto d-block">
-            <h2> The Incredible Hulk</h2>
+            <h2> Random User</h2>
         </div>
-        <div class="row align-items-center">
+        <div class="row align-items-center" id="someApp">
             <div class="col-8">
                 <div class="row align-items-center">
                     <div class="col-4" id="tit">
                         <h4> Name </h4>
                     </div>
                     <div class="col-8" id="dat">
-                        <h4> Bruce Banner</h4>
+                        <h4>{{ result.name.first }} {{ result.name.last }}</h4>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                  <div class="col-4" id="tit">
+                      <h4> Country of Origin </h4>
+                  </div>
+                  <div class="col-8" id="dat">
+                  <h4>{{ result.location.country }}</h4>
+                  </div>
+              </div>
+                <div class="row align-items-center">
+                    <div class="col-4" id="tit">
+                        <h4> City and State </h4>
+                    </div>
+                    <div class="col-8" id="dat">
+                    <h4> {{ result.location.city }} , {{ result.location.state }}</h4>
                     </div>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-4" id="tit">
-                        <h4> Alias </h4>
+                        <h4> Gender </h4>
                     </div>
                     <div class="col-8" id="dat">
-                    <h4> Hulk </h4>
+                    <h4> {{ result.gender }} </h4>
                     </div>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-4" id="tit">
-                        <h4> Reality </h4>
+                        <h4> Birthdate </h4>
                     </div>
                     <div class="col-8" id="dat">
-                    <h4> Earth-616</h4>
+                    <h4>{{result.dob.date}}</h4>
                     </div>
                 </div>
                 <div class="row align-items-center">
-                    <div class="col-4" id="tit">
-                        <h4> Place of Birth </h4>
-                    </div>
-                    <div class="col-8" id="dat">
-                    <h4> Dayton, Ohio</h4>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-4" id="tit">
-                        <h4> Date of Birth </h4>
-                    </div>
-                    <div class="col-8" id="dat">
-                    <h4> December 18, 1969</h4>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-4" id="tit">
-                        <h4> Education </h4>
-                    </div>
-                    <div class="col-8" id="dat">
-                    <h4> Ph.D in Nuclear Physics</h4>
-                    </div>
-                </div>
+                  <div class="col-4" id="tit">
+                      <h4> Age </h4>
+                  </div>
+                  <div class="col-8" id="dat">
+                  <h4>{{result.dob.age}}</h4>
+                  </div>
+              </div>
                 <div class="row align-items-center">
                     <div class="col-4" id="tit">
                         <h4> Email Address </h4>
                     </div>
                     <div class="col-8" id="dat">
-                    <h4><a href="mailto: hulkk@banner.com"> hulk@banner.com </a></h4>
+                    <h4><a v-bind:href="'mailto:' + result.email">{{ result.email }}</a></h4>
                     </div>
                 </div>
             </div>
             <div class="col-4">
-                <a href="https://avatarfiles.alphacoders.com/125/125299.jpg" target="_blank"><img class="himg" src="img/profilepic.jpg" alt="profilepic"></a>
-                <figcaption class="figure-caption">Source: alphacoders</figcaption>
-          <!-- Image Source: https://avatarfiles.alphacoders.com/125/125299.jpg-->
+                <a v-bind:href="result.picture.medium" target="_blank"><img class="himg" v-bind:src="result.picture.large" alt="profilepic"></a>
+                <figcaption class="figure-caption">Source: randomuser.me</figcaption>
+          <!-- Image Source: randomuser.me-->
             </div>
-        </div>
-        <div class="row align-items-start">
-            <h5>Note: When in Hulk mode, cannot reply to emails. Because phone too small for hulk.</h5>
         </div>
     </div>
   <!-- Optional JavaScript; choose one of the two! -->
@@ -119,5 +117,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     -->
+    <script src="js/index.js"></script>
 </body>
 </html>
