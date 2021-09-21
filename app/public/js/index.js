@@ -6,9 +6,14 @@ const SomeApp = {
         message: "Waiting ..."
       }
     },
-    created() {
-        //Method 1:
-        fetch('https://randomuser.me/api/')
+    computed: {
+        prettyBirthday() {
+            return dayjs(this.result.dob.age).format('D MMM YYYY');
+        }
+    },
+    methods: {
+        fetchUserData() {
+          fetch('https://randomuser.me/api/')
         .then(response => response.json())
         .then((json) => {
             console.log("Got json back:", json);
@@ -19,6 +24,10 @@ const SomeApp = {
             console.error(error);
         });
         console.log("B");
+        }
+    },
+    created() {
+        this.fetchUserData();
     }
 
 }
