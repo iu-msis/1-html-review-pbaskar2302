@@ -60,3 +60,16 @@ th[role=columnheader]:not(.no-sort):hover:after {
 	visibility: visible;
 	opacity: 1;
 }
+.but{
+	background-color: green; 
+	border:white;
+	margin: 10px;
+}
+.but:hover{
+	background-color:yellowgreen;
+	border:white;
+}
+.but:focus{
+	background-color:yellowgreen;
+	border:white;
+}
