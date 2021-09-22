@@ -8,7 +8,7 @@ const SomeApp = {
     },
     computed: {
         prettyBirthday() {
-            return dayjs(this.result.dob.age).format('D MMM YYYY');
+            return dayjs(this.result.dob.date).format('D MMM YYYY');
         }
     },
     methods: {
