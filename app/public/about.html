@@ -39,7 +39,19 @@
           </div>
         </div>
       </nav>
-      <div class="container">
+      <div id="offerApp" class="container">
+        <div class="row align-items-start">
+          <div class="col col-4">
+            <!-- <p>Profile information for {{ person.name.first }}</p> -->
+            <div v-for="s in students" v-on:click="selectStudent(s)"
+             :class="['student', {selected: selectedStudent && s.id == selectedStudent.id}]">
+              <strong>{{ s.username }}</strong><br>
+              {{ s.name }}
+            </div>
+          </div>
+        </div>
+      </div>  
+      <!-- <div id="offerApp" class="container">
         <div class="row mx-auto d-block">
             <h2> Random User</h2>
         </div>
@@ -110,10 +122,10 @@
             <div class="col-4">
                 <a v-bind:href="result.picture.medium" target="_blank"><img class="himg" v-bind:src="result.picture.large" alt="profilepic"></a>
                 <figcaption class="figure-caption">Source: randomuser.me</figcaption>
-          <!-- Image Source: randomuser.me-->
+           Image Source: randomuser.me
             </div>
         </div>
-    </div>
+    </div> -->
   <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
