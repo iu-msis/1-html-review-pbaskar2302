@@ -64,30 +64,30 @@
             </tr>
             </tbody>
         </table>
-        <form>
+        <form v-on:submit.prevent="postNewBook">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title">
+                <input type="text" v-model="bookForm.title" class="form-control" id="title">
             </div>
             <div class="mb-3">
                 <label for="auth" class="form-label">Author</label>
-                <input type="text" class="form-control" id="auth">
+                <input type="text"v-model="bookForm.author" class="form-control" id="auth">
             </div>
             <div class="mb-3">
                 <label for="published" class="form-label">Year Published</label>
-                <input type="number" class="form-control" id="published">
+                <input type="number"v-model="bookForm.yearpub" class="form-control" id="published">
             </div>
             <div class="mb-3">
                 <label for="publisher" class="form-label">Publisher</label>
-                <input type="text" class="form-control" id="publisher">
+                <input type="text"v-model="bookForm.publisher" class="form-control" id="publisher">
             </div>
             <div class="mb-3">
                 <label for="pages" class="form-label">Number of Pages</label>
-                <input type="number" class="form-control" id="pages">
+                <input type="number"v-model="bookForm.pages" class="form-control" id="pages">
             </div>
             <div class="mb-3">
                 <label for="msrp" class="form-label">MSRP</label>
-                <input type="number" class="form-control" id="msrp">
+                <input type="number" step="0.01" v-model="bookForm.msrp" class="form-control" id="msrp">
             </div>
             <button type="submit" class="btn btn-primary but">Submit</button>
         </form>
