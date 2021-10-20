@@ -10,7 +10,6 @@ const SomeApp = {
             pages: {},
             msrp: {},
         },
-        "selectedBook": null,
         "bookForm": {}
       }
     },
