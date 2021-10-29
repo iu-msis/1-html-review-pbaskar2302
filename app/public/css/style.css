@@ -63,6 +63,7 @@ th[role=columnheader]:not(.no-sort):hover:after {
 .but{
 	background-color: green; 
 	border:white;
+	color: white;
 	margin: 10px;
 }
 .but:hover{

@@ -50,6 +50,8 @@
                     <th scope="col">Publisher</th>
                     <th scope="col">Number of Pages</th>
                     <th scope="col">MSRP</th>
+                    <th></th>
+                    <th>Edit/Delete</th>
                   </tr>
             </thead>
             <tbody>
@@ -61,35 +63,45 @@
                 <td>{{ book.publisher }}</td>
                 <td>{{ book.pages }}</td>
                 <td>{{ prettyDollar(book.msrp) }}</td>
+                <td></td>
+                <td>
+                  <button type="button" 
+                    class="btn btn-outline-secondary btn-sm but"
+                    v-on:click="selectBookToEdit(book)">Edit</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm but"
+                    v-on:click="postDeleteBook(book)">Delete</button>
+                </td>
             </tr>
             </tbody>
         </table>
-        <form v-on:submit.prevent="postNewBook">
+        <h3>{{ selectedBook === null ? "Add " : "Edit " }} Offer</h3>
+        <form v-on:submit.prevent="postBook">
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" v-model="bookForm.title" class="form-control" id="title">
+                <label for="title" class="form-label">Title<span class="reqd">*</span></label>
+                <input type="text" v-model="bookForm.title" class="form-control" id="title" required="required">
             </div>
             <div class="mb-3">
-                <label for="auth" class="form-label">Author</label>
-                <input type="text"v-model="bookForm.author" class="form-control" id="auth">
+                <label for="auth" class="form-label">Author<span class="reqd">*</span></label>
+                <input type="text"v-model="bookForm.author" class="form-control" id="auth" required="required">
             </div>
             <div class="mb-3">
-                <label for="published" class="form-label">Year Published</label>
-                <input type="number"v-model="bookForm.yearpub" class="form-control" id="published">
+                <label for="published" class="form-label">Year Published<span class="reqd">*</span></label>
+                <input type="number"v-model="bookForm.yearpub" class="form-control" id="published" required="required">
             </div>
             <div class="mb-3">
-                <label for="publisher" class="form-label">Publisher</label>
-                <input type="text"v-model="bookForm.publisher" class="form-control" id="publisher">
+                <label for="publisher" class="form-label">Publisher<span class="reqd">*</span></label>
+                <input type="text"v-model="bookForm.publisher" class="form-control" id="publisher" required="required">
             </div>
             <div class="mb-3">
-                <label for="pages" class="form-label">Number of Pages</label>
-                <input type="number"v-model="bookForm.pages" class="form-control" id="pages">
+                <label for="pages" class="form-label">Number of Pages<span class="reqd">*</span></label>
+                <input type="number"v-model="bookForm.pages" class="form-control" id="pages" required="required">
             </div>
             <div class="mb-3">
-                <label for="msrp" class="form-label">MSRP</label>
-                <input type="number" step="0.01" v-model="bookForm.msrp" class="form-control" id="msrp">
+                <label for="msrp" class="form-label">MSRP<span class="reqd">*</span></label>
+                <input type="number" step="0.01" v-model="bookForm.msrp" class="form-control" id="msrp" required="required">
             </div>
-            <button type="submit" class="btn btn-primary but">Submit</button>
+            <button type="submit" class="btn btn-primary but">{{ selectedBook === null ? "Add " : "Edit " }} Book</button>
+            <button type="button" class="btn btn-outline-secondary but" v-if="selectedBook" v-on:click="resetBookForm">Cancel</button>
         </form>
       </div>
   <!-- Optional JavaScript; choose one of the two! -->
