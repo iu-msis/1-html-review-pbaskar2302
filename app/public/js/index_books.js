@@ -38,7 +38,7 @@ const SomeApp = {
             this.bookForm = Object.assign({}, this.selectedBook);
         },
         postDeleteBook(o) {
-            if (!confirm("Are you sure you want to delete the book from "+o.title+"?")) {
+            if (!confirm("Are you sure you want to delete the book?")) {
               return;
             }
             console.log("Delete!", o);
